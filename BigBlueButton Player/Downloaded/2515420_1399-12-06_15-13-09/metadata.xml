@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<recording>
+  <id>6a5eb56ed78067d97f094b0bc56e764e0910d117-1614166989161</id>
+  <state>published</state>
+  <published>true</published>
+  <start_time>1614166989161</start_time>
+  <end_time>1614181394179</end_time>
+  <participants>82</participants>
+  <meeting id="6a5eb56ed78067d97f094b0bc56e764e0910d117-1614166989161" externalId="7a94bfa158aa51dc51f85d4718532d2618618489-18092-24043" name="&#x62C;&#x644;&#x633;&#x647; &#x645;&#x62C;&#x627;&#x632;&#x6CC; BigBlueButton" breakout="false"/>
+  <meta>
+    <bbb-recording-description>&#x62C;&#x644;&#x633;&#x647; &#x645;&#x62C;&#x627;&#x632;&#x6CC; BigBlueButton</bbb-recording-description>
+    <bbb-origin>Moodle</bbb-origin>
+    <bbb-recording-tags/>
+    <bbb-context-label>992 - 2515420 - &#x62A;&#x62F;&#x631;&#x6CC;&#x633;&#x200C;&#x6CC;&#x627;&#x631; &#x6A9;&#x646;&#x62A;&#x631;&#x644; &#x645;&#x648;&#x62C;&#x648;&#x62F;&#x6CC; 1(1)</bbb-context-label>
+    <bbb-context>&#x62A;&#x62F;&#x631;&#x6CC;&#x633;&#x200C;&#x6CC;&#x627;&#x631; &#x6A9;&#x646;&#x62A;&#x631;&#x644; &#x645;&#x648;&#x62C;&#x648;&#x62F;&#x6CC; 1 - &#x6AF;&#x631;&#x648;&#x647; 1 - &#x635;&#x627;&#x644;&#x62D;&#x6CC;</bbb-context>
+    <bbb-origin-server-name>courses.aut.ac.ir</bbb-origin-server-name>
+    <isBreakout>false</isBreakout>
+    <meetingName>&#x62C;&#x644;&#x633;&#x647; &#x645;&#x62C;&#x627;&#x632;&#x6CC; BigBlueButton</meetingName>
+    <bbb-context-name>&#x62A;&#x62F;&#x631;&#x6CC;&#x633;&#x200C;&#x6CC;&#x627;&#x631; &#x6A9;&#x646;&#x62A;&#x631;&#x644; &#x645;&#x648;&#x62C;&#x648;&#x62F;&#x6CC; 1 - &#x6AF;&#x631;&#x648;&#x647; 1 - &#x635;&#x627;&#x644;&#x62D;&#x6CC;</bbb-context-name>
+    <bbb-recording-name>&#x62C;&#x644;&#x633;&#x647; &#x645;&#x62C;&#x627;&#x632;&#x6CC; BigBlueButton</bbb-recording-name>
+    <bbb-context-id>18092</bbb-context-id>
+    <bbb-origin-version>3.10+ (Build: 20201224)</bbb-origin-version>
+    <meetingId>7a94bfa158aa51dc51f85d4718532d2618618489-18092-24043</meetingId>
+    <bbb-origin-server-common-name/>
+    <bbb-origin-tag>moodle-mod_bigbluebuttonbn (2019101003)</bbb-origin-tag>
+  </meta>
+  <playback>
+    <format>presentation</format>
+    <link>https://blue5.aut.ac.ir/playback/presentation/2.3/6a5eb56ed78067d97f094b0bc56e764e0910d117-1614166989161</link>
+    <processing_time>1718591</processing_time>
+    <duration>4155807</duration>
+    <extensions>
+      <preview>
+        <images>
+          <image width="176" height="136" alt="&#x202B;&#x62A;&#x62E;&#x62A;&#x647;&#x202C; &#x202B;&#x62E;&#x627;&#x644;&#x6CC;&#x202C; &#x202B;&#x635;&#x641;&#x62D;&#x647;&#x202C;">https://blue5.aut.ac.ir/presentation/6a5eb56ed78067d97f094b0bc56e764e0910d117-1614166989161/presentation/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1614166989177/thumbnails/thumb-1.png</image>
+          <image width="176" height="136" alt="&#x202B;&#x62A;&#x62E;&#x62A;&#x647;&#x202C; &#x202B;&#x62E;&#x627;&#x644;&#x6CC;&#x202C; &#x202B;&#x635;&#x641;&#x62D;&#x647;&#x202C;">https://blue5.aut.ac.ir/presentation/6a5eb56ed78067d97f094b0bc56e764e0910d117-1614166989161/presentation/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1614166989177/thumbnails/thumb-2.png</image>
+          <image width="176" height="136" alt="&#x202B;&#x62A;&#x62E;&#x62A;&#x647;&#x202C; &#x202B;&#x62E;&#x627;&#x644;&#x6CC;&#x202C; &#x202B;&#x635;&#x641;&#x62D;&#x647;&#x202C;">https://blue5.aut.ac.ir/presentation/6a5eb56ed78067d97f094b0bc56e764e0910d117-1614166989161/presentation/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1614166989177/thumbnails/thumb-3.png</image>
+        </images>
+      </preview>
+    </extensions>
+    <size>31598817</size>
+  </playback>
+  <raw_size>62139840</raw_size>
+</recording>

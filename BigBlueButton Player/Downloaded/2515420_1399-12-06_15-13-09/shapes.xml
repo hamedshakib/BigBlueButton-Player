@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svgfile" style="position:absolute;height:600px;width:800px" version="1.1" viewBox="0 0 800 600">
+  <image id="image1" class="slide" in="0.0" out="23.7" xlink:href="presentation/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1614166989177/slide-1.png" width="1600" height="900" x="0" y="0" style="visibility:hidden" text="presentation/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1614166989177/textfiles/slide-1.txt"/>
+  <image id="image2" class="slide" in="23.7" out="1854.7" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-1.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-1.txt"/>
+  <g class="canvas" id="canvas2" image="image2" display="none">
+    <g id="image2-draw1" class="shape" timestamp="23.7" undo="23.7" shape="image2-text1" style="color:#ff0000;word-wrap:break-word;visibility:hidden;font-family:Arial;font-size:74.59207px">
+      <switch>
+        <foreignObject width="175.35426" height="193.94743" x="590.82959" y="388.15306">
+          <p xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0"/>
+        </foreignObject>
+      </switch>
+    </g>
+    <g id="image2-draw2" class="shape" timestamp="23.7" undo="23.7" shape="image2-text2" style="color:#ff0000;word-wrap:break-word;visibility:hidden;font-family:Arial;font-size:74.59207px">
+      <switch>
+        <foreignObject width="339.3" height="320.0" x="613.21522" y="488.85658">
+          <p xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0"/>
+        </foreignObject>
+      </switch>
+    </g>
+    <g id="image2-draw3" class="shape" timestamp="23.7" undo="23.7" shape="image2-text3" style="color:#000000;word-wrap:break-word;visibility:hidden;font-family:Arial;font-size:74.59207px">
+      <switch>
+        <foreignObject width="208.93274" height="372.97587" x="628.13904" y="481.39704">
+          <p xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0">sdvfv</p>
+        </foreignObject>
+      </switch>
+    </g>
+  </g>
+  <image id="image3" class="slide" in="1854.7" out="2396.8" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-2.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-2.txt"/>
+  <image id="image4" class="slide" in="2396.8" out="2932.7" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-3.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-3.txt"/>
+  <image id="image5" class="slide" in="2932.7" out="2934.7" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-4.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-4.txt"/>
+  <image id="image6" class="slide" in="2934.7" out="3292.7" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-3.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-3.txt"/>
+  <image id="image7" class="slide" in="3292.7" out="3294.6" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-4.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-4.txt"/>
+  <image id="image8" class="slide" in="3294.6" out="3295.0" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-3.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-3.txt"/>
+  <image id="image9" class="slide" in="3295.0" out="3302.3" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-2.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-2.txt"/>
+  <image id="image10" class="slide" in="3302.3" out="3303.6" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-1.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-1.txt"/>
+  <g class="canvas" id="canvas10" image="image10" display="none">
+    <g id="image10-draw1" class="shape" timestamp="23.7" undo="23.7" shape="image10-text1" style="color:#ff0000;word-wrap:break-word;visibility:hidden;font-family:Arial;font-size:74.59207px">
+      <switch>
+        <foreignObject width="175.35426" height="193.94743" x="590.82959" y="388.15306">
+          <p xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0"/>
+        </foreignObject>
+      </switch>
+    </g>
+    <g id="image10-draw2" class="shape" timestamp="23.7" undo="23.7" shape="image10-text2" style="color:#ff0000;word-wrap:break-word;visibility:hidden;font-family:Arial;font-size:74.59207px">
+      <switch>
+        <foreignObject width="339.3" height="320.0" x="613.21522" y="488.85658">
+          <p xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0"/>
+        </foreignObject>
+      </switch>
+    </g>
+    <g id="image10-draw3" class="shape" timestamp="23.7" undo="23.7" shape="image10-text3" style="color:#000000;word-wrap:break-word;visibility:hidden;font-family:Arial;font-size:74.59207px">
+      <switch>
+        <foreignObject width="208.93274" height="372.97587" x="628.13904" y="481.39704">
+          <p xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0">sdvfv</p>
+        </foreignObject>
+      </switch>
+    </g>
+  </g>
+  <image id="image11" class="slide" in="3303.6" out="3304.3" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-2.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-2.txt"/>
+  <image id="image12" class="slide" in="3304.3" out="3674.2" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-3.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-3.txt"/>
+  <image id="image13" class="slide" in="3674.2" out="17403.6" xlink:href="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/slide-4.png" width="1131" height="1600" x="0" y="0" style="visibility:hidden" text="presentation/9b5f47563d2c36e00ffc7ca84a34fcda4e75f10a-1614167144939/textfiles/slide-4.txt"/>
+</svg>

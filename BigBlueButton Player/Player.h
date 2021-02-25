@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_Player.h"
+#include "Download.h"
 
 class Player : public QMainWindow
 {

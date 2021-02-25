@@ -7,16 +7,25 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Download.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Form Files">
-      <UniqueIdentifier>{28ae39c3-f6d5-4bd9-aa6e-1df9430f54c2}</UniqueIdentifier>
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>true</ParseFiles>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{961bf8ea-713f-491e-92a5-d590fcbf27ed}</UniqueIdentifier>
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <ParseFiles>true</ParseFiles>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{0b421508-8381-459f-b4dc-f6bd0d00218d}</UniqueIdentifier>
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <ParseFiles>true</ParseFiles>
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{f33264b2-d64f-4d3f-b5bb-dcb7e7d0359c}</UniqueIdentifier>
@@ -26,9 +35,15 @@
     <QtMoc Include="Player.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Download.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Player.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Download.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
