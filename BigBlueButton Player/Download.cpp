@@ -4,6 +4,7 @@ Download::Download(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+    add_hexTounicode();
     showDialog();
     connect(Download_btn, &QPushButton::clicked, this, &Download::download_clicked);
     connect(Cancel_btn, &QPushButton::clicked, this, [&](bool) {this->close(); });
@@ -152,6 +153,7 @@ void Download::pre_download()
     replay1 = manager1->get(request1);
     eventLoop.exec();
     metadata = replay1->readAll();
+    metadata = convertTounicode(metadata);
     qint64 srarttime = metadata.mid(metadata.indexOf("<start_time>", 0) + 12, metadata.indexOf("</start_time>", 0) - metadata.indexOf("<start_time>", 0) - 12).toULongLong();
     QString className = metadata.mid(metadata.indexOf("<bbb-context-label>", 0) + 18, metadata.indexOf("</bbb-context-label>", 0) - metadata.indexOf("<bbb-context-label>", 0) - 18);
     QString classId=className.mid(6, 8).replace(" ","");
@@ -331,6 +333,7 @@ void Download::downloading()
     eventLoop.exec();
     chats = replay1->readAll();
     chats = convertTounicode(chats);
+    qDebug() << chats;
     QString namefileChat = "Downloaded/" + NameFolder + "/" + "chats.xml";
     chatsfile.setFileName(namefileChat);
     if (chatsfile.open(QIODevice::ReadWrite))
@@ -390,49 +393,69 @@ void Download::downloading()
     //deskshare_Asli just share screen
     QString DeskshareUrl1 = "https://blue.aut.ac.ir/presentation/" + meetingID + "/deskshare/deskshare.webm";
     request1.setUrl(DeskshareUrl1);
-    replay1 = manager1->get(request1);
-    connect(replay1, &QNetworkReply::downloadProgress, this, &Download::manageSizeDownload);
-    eventLoop.exec();
-    desksharevideo = replay1->readAll();
-    QString namefileDeskshare1 = "Downloaded/" + meetingID + "/" + "deskshare1.webm";
+    QString namefileDeskshare1 = "Downloaded/" + NameFolder + "/" + "deskshare1.webm";
     desksharevideofile.setFileName(namefileDeskshare1);
+    desksharevideofile.resize(0);
     if (desksharevideofile.open(QIODevice::ReadWrite))
     {
-        desksharevideofile.write(desksharevideo);
-        desksharevideofile.close();
+        replay1 = manager1->get(request1);
+        connect(replay1, &QNetworkReply::downloadProgress, this, &Download::manageSizeDownload);
+        connect(replay1, &QNetworkReply::readyRead, this, [&]() {qDebug() << "runnnnn";
+                                                                 desksharevideofile.close();
+                                                                 if (desksharevideofile.open(QIODevice::WriteOnly | QIODevice::Append))
+                                                                 {
+                                                                  qDebug() << "agra";
+                                                                  desksharevideofile.write(replay1->readAll());
+                                                                 }});
+
+
+
+
+        eventLoop.exec();
+
     }
+    if (desksharevideofile.isOpen())
+        desksharevideofile.close();
 
 
     downloaded_complited += replay1->header(QNetworkRequest::ContentLengthHeader).toULongLong();
     progressBar10->setValue((float)((downloaded_complited) * 100 / All_size));
-    desksharevideo.clear();
 //end pak
 
 
 
-
+/*
 //pak
     //webcams_Asli and sound
     QString webcamsUrl1 = "https://blue.aut.ac.ir/presentation/" + meetingID + "/video/webcams.webm";
     request1.setUrl(webcamsUrl1);
     QString namefileWebcams = "Downloaded/" + NameFolder + "/" + "webcams.webm";
     webcamsfile.setFileName(namefileWebcams);
+    webcamsfile.resize(0);
     if (webcamsfile.open(QIODevice::ReadWrite))
     {
         replay1 = manager1->get(request1);
         connect(replay1, &QNetworkReply::downloadProgress, this, &Download::manageSizeDownload);
-        connect(replay1, &QNetworkReply::readyRead, this, [&]() {webcamsfile.write(replay1->readAll()); webcamsfile.flush(); });
+        connect(replay1, &QNetworkReply::readyRead, this, [&]() {qDebug() << "runnnnn";
+                                                                webcamsfile.close();
+                                                                if (webcamsfile.open(QIODevice::WriteOnly |QIODevice::Append))
+                                                                { 
+                                                                 qDebug() << "agra";
+                                                                 webcamsfile.write(replay1->readAll());
+                                                                  }});
+
+
         eventLoop.exec();
 
     }
+    if(webcamsfile.isOpen())
     webcamsfile.close();
 
 
     downloaded_complited += replay1->header(QNetworkRequest::ContentLengthHeader).toULongLong();
     progressBar10->setValue((float)((downloaded_complited) * 100 / All_size));
-    webcams.clear();
 //end pak
-
+*/
 
 
     //download panzooms
@@ -556,146 +579,146 @@ void Download::manageSizeDownload(qint64 bytesReceived, qint64 bytesTotal)
 
 void Download::add_hexTounicode()
 {
-    hexTounicode.insert(QString("&#x620;"), QString("ي"));
-    hexTounicode.insert(QString("&#x621;"), QString("ء"));
-    hexTounicode.insert(QString("&#x622;"), QString("آ"));
-    hexTounicode.insert(QString("&#x623;"), QString("أ"));
-    hexTounicode.insert(QString("&#x624;"), QString("ؤ"));
-    hexTounicode.insert(QString("&#x625;"), QString("إ"));
-    hexTounicode.insert(QString("&#x626;"), QString("ئ"));
-    hexTounicode.insert(QString("&#x627;"), QString("ا"));
-    hexTounicode.insert(QString("&#x628;"), QString("ب"));
-    hexTounicode.insert(QString("&#x629;"), QString("ة"));
-    hexTounicode.insert(QString("&#x630;"), QString("ذ"));
-    hexTounicode.insert(QString("&#x631;"), QString("ر"));
-    hexTounicode.insert(QString("&#x632;"), QString("ز"));
-    hexTounicode.insert(QString("&#x633;"), QString("س"));
-    hexTounicode.insert(QString("&#x634;"), QString("ش"));
-    hexTounicode.insert(QString("&#x635;"), QString("ص"));
-    hexTounicode.insert(QString("&#x636;"), QString("ض"));
-    hexTounicode.insert(QString("&#x637;"), QString("ط"));
-    hexTounicode.insert(QString("&#x638;"), QString("ظ"));
-    hexTounicode.insert(QString("&#x639;"), QString("ع"));
-    hexTounicode.insert(QString("&#x640;"), QString("@"));
-    hexTounicode.insert(QString("&#x641;"), QString("ف"));
-    hexTounicode.insert(QString("&#x642;"), QString("ق"));
-    hexTounicode.insert(QString("&#x643;"), QString("ک"));
-    hexTounicode.insert(QString("&#x6A9;"), QString("ک"));
-    hexTounicode.insert(QString("&#x644;"), QString("ل"));
-    hexTounicode.insert(QString("&#x645;"), QString("م"));
-    hexTounicode.insert(QString("&#x646;"), QString("ن"));
-    hexTounicode.insert(QString("&#x647;"), QString("ه"));
-    hexTounicode.insert(QString("&#x648;"), QString("و"));
-    hexTounicode.insert(QString("&#x649;"), QString("ی"));
-    hexTounicode.insert(QString("&#x661;"), QString("1"));
-    hexTounicode.insert(QString("&#x662;"), QString("2"));
-    hexTounicode.insert(QString("&#x663;"), QString("3"));
-    hexTounicode.insert(QString("&#x664;"), QString("4"));
-    hexTounicode.insert(QString("&#x665;"), QString("5"));
-    hexTounicode.insert(QString("&#x666;"), QString("6"));
-    hexTounicode.insert(QString("&#x667;"), QString("7"));
-    hexTounicode.insert(QString("&#x668;"), QString("8"));
-    hexTounicode.insert(QString("&#x669;"), QString("9"));
-    hexTounicode.insert(QString("&#x686;"), QString("چ"));
-    hexTounicode.insert(QString("&#x698;"), QString("ژ"));
-    hexTounicode.insert(QString("&#x62D;"), QString("ح"));
-    hexTounicode.insert(QString("&#x67E;"), QString("پ"));
-    hexTounicode.insert(QString("&#x63A;"), QString("غ"));
-    hexTounicode.insert(QString("&#x62E;"), QString("خ"));
-    hexTounicode.insert(QString("&#x62C;"), QString("ج"));
-    hexTounicode.insert(QString("&#x62D;"), QString("ح"));
-    hexTounicode.insert(QString("&#x6AF;"), QString("گ"));
-    hexTounicode.insert(QString("&#x62A;"), QString("ت"));
-    hexTounicode.insert(QString("&#x62F;"), QString("د"));
-    hexTounicode.insert(QString("&#x6CC;"), QString("ی"));
-    hexTounicode.insert(QString("&#x62B;"), QString("ث"));
-    hexTounicode.insert(QString("&#x2E;"), QString("."));
-    hexTounicode.insert(QString("&#x21;"), QString("!"));
-    hexTounicode.insert(QString("&#x23;"), QString("#"));
-    hexTounicode.insert(QString("&#x24;"), QString("$"));
-    hexTounicode.insert(QString("&#x25;"), QString("%"));
-    hexTounicode.insert(QString("&#x5E;"), QString("^"));
-    hexTounicode.insert(QString("&#x26;"), QString("&"));
-    hexTounicode.insert(QString("&#x2A;"), QString("*"));
-    hexTounicode.insert(QString("&#x28;"), QString("("));
-    hexTounicode.insert(QString("&#x29;"), QString(")"));
-    hexTounicode.insert(QString("&#x3C;"), QString("<"));
-    hexTounicode.insert(QString("&#x3E;"), QString(">"));
-    hexTounicode.insert(QString("&#x3F;"), QString("?"));
-    hexTounicode.insert(QString("&#x2C;"), QString(","));
-    hexTounicode.insert(QString("&#x7E;"), QString("~"));
-    hexTounicode.insert(QString("&#x5F;"), QString("_"));
-    hexTounicode.insert(QString("&#x2B;"), QString("+"));
-    hexTounicode.insert(QString("&#x3D;"), QString("="));
-    hexTounicode.insert(QString("&#x2D;"), QString("-"));
-    hexTounicode.insert(QString("&#x61F;"), QString("؟"));
-    hexTounicode.insert(QString("&#x3A;"), QString(":"));
-    hexTounicode.insert(QString("&#x22;"), QString(""""));
-    hexTounicode.insert(QString("&#x7B;"), QString("{"));
-    hexTounicode.insert(QString("&#x7D;"), QString("}"));
-    hexTounicode.insert(QString("&#x7C;"), QString("|"));
-    hexTounicode.insert(QString("&#x2F;"), QString("/"));
-    hexTounicode.insert(QString("&#x5C;"), QString("\\"));
-    hexTounicode.insert(QString("&#x3B;"), QString(";"));
-    hexTounicode.insert(QString("&#x27;"), QString("'"));
-    hexTounicode.insert(QString("&#x30;"), QString("0"));
-    hexTounicode.insert(QString("&#x61B;"), QString("؛"));
-    hexTounicode.insert(QString("&#x60C;"), QString("،"));
-    hexTounicode.insert(QString("&#x5D;"), QString("]"));
-    hexTounicode.insert(QString("&#x5B;"), QString("["));
+    hexTounicode.insert(QString("&#x620;"), QString(u8"ي"));
+    hexTounicode.insert(QString("&#x621;"), QString(u8"ء"));
+    hexTounicode.insert(QString("&#x622;"), QString(u8"آ"));
+    hexTounicode.insert(QString("&#x623;"), QString(u8"أ"));
+    hexTounicode.insert(QString("&#x624;"), QString(u8"ؤ"));
+    hexTounicode.insert(QString("&#x625;"), QString(u8"إ"));
+    hexTounicode.insert(QString("&#x626;"), QString(u8"ئ"));
+    hexTounicode.insert(QString("&#x627;"), QString(u8"ا"));
+    hexTounicode.insert(QString("&#x628;"), QString(u8"ب"));
+    hexTounicode.insert(QString("&#x629;"), QString(u8"ة"));
+    hexTounicode.insert(QString("&#x630;"), QString(u8"ذ"));
+    hexTounicode.insert(QString("&#x631;"), QString(u8"ر"));
+    hexTounicode.insert(QString("&#x632;"), QString(u8"ز"));
+    hexTounicode.insert(QString("&#x633;"), QString(u8"س"));
+    hexTounicode.insert(QString("&#x634;"), QString(u8"ش"));
+    hexTounicode.insert(QString("&#x635;"), QString(u8"ص"));
+    hexTounicode.insert(QString("&#x636;"), QString(u8"ض"));
+    hexTounicode.insert(QString("&#x637;"), QString(u8"ط"));
+    hexTounicode.insert(QString("&#x638;"), QString(u8"ظ"));
+    hexTounicode.insert(QString("&#x639;"), QString(u8"ع"));
+    hexTounicode.insert(QString("&#x640;"), QString(u8"@"));
+    hexTounicode.insert(QString("&#x641;"), QString(u8"ف"));
+    hexTounicode.insert(QString("&#x642;"), QString(u8"ق"));
+    hexTounicode.insert(QString("&#x643;"), QString(u8"ک"));
+    hexTounicode.insert(QString("&#x6A9;"), QString(u8"ک"));
+    hexTounicode.insert(QString("&#x644;"), QString(u8"ل"));
+    hexTounicode.insert(QString("&#x645;"), QString(u8"م"));
+    hexTounicode.insert(QString("&#x646;"), QString(u8"ن"));
+    hexTounicode.insert(QString("&#x647;"), QString(u8"ه"));
+    hexTounicode.insert(QString("&#x648;"), QString(u8"و"));
+    hexTounicode.insert(QString("&#x649;"), QString(u8"ی"));
+    hexTounicode.insert(QString("&#x661;"), QString(u8"1"));
+    hexTounicode.insert(QString("&#x662;"), QString(u8"2"));
+    hexTounicode.insert(QString("&#x663;"), QString(u8"3"));
+    hexTounicode.insert(QString("&#x664;"), QString(u8"4"));
+    hexTounicode.insert(QString("&#x665;"), QString(u8"5"));
+    hexTounicode.insert(QString("&#x666;"), QString(u8"6"));
+    hexTounicode.insert(QString("&#x667;"), QString(u8"7"));
+    hexTounicode.insert(QString("&#x668;"), QString(u8"8"));
+    hexTounicode.insert(QString("&#x669;"), QString(u8"9"));
+    hexTounicode.insert(QString("&#x686;"), QString(u8"چ"));
+    hexTounicode.insert(QString("&#x698;"), QString(u8"ژ"));
+    hexTounicode.insert(QString("&#x62D;"), QString(u8"ح"));
+    hexTounicode.insert(QString("&#x67E;"), QString(u8"پ"));
+    hexTounicode.insert(QString("&#x63A;"), QString(u8"غ"));
+    hexTounicode.insert(QString("&#x62E;"), QString(u8"خ"));
+    hexTounicode.insert(QString("&#x62C;"), QString(u8"ج"));
+    hexTounicode.insert(QString("&#x62D;"), QString(u8"ح"));
+    hexTounicode.insert(QString("&#x6AF;"), QString(u8"گ"));
+    hexTounicode.insert(QString("&#x62A;"), QString(u8"ت"));
+    hexTounicode.insert(QString("&#x62F;"), QString(u8"د"));
+    hexTounicode.insert(QString("&#x6CC;"), QString(u8"ی"));
+    hexTounicode.insert(QString("&#x62B;"), QString(u8"ث"));
+    hexTounicode.insert(QString("&#x2E;"), QString(u8"."));
+    hexTounicode.insert(QString("&#x21;"), QString(u8"!"));
+    hexTounicode.insert(QString("&#x23;"), QString(u8"#"));
+    hexTounicode.insert(QString("&#x24;"), QString(u8"$"));
+    hexTounicode.insert(QString("&#x25;"), QString(u8"%"));
+    hexTounicode.insert(QString("&#x5E;"), QString(u8"^"));
+    hexTounicode.insert(QString("&#x26;"), QString(u8"&"));
+    hexTounicode.insert(QString("&#x2A;"), QString(u8"*"));
+    hexTounicode.insert(QString("&#x28;"), QString(u8"("));
+    hexTounicode.insert(QString("&#x29;"), QString(u8")"));
+    hexTounicode.insert(QString("&#x3C;"), QString(u8"<"));
+    hexTounicode.insert(QString("&#x3E;"), QString(u8">"));
+    hexTounicode.insert(QString("&#x3F;"), QString(u8"?"));
+    hexTounicode.insert(QString("&#x2C;"), QString(u8","));
+    hexTounicode.insert(QString("&#x7E;"), QString(u8"~"));
+    hexTounicode.insert(QString("&#x5F;"), QString(u8"_"));
+    hexTounicode.insert(QString("&#x2B;"), QString(u8"+"));
+    hexTounicode.insert(QString("&#x3D;"), QString(u8"="));
+    hexTounicode.insert(QString("&#x2D;"), QString(u8"-"));
+    hexTounicode.insert(QString("&#x61F;"), QString(u8"؟"));
+    hexTounicode.insert(QString("&#x3A;"), QString(u8":"));
+    hexTounicode.insert(QString("&#x22;"), QString(u8""""));
+    hexTounicode.insert(QString("&#x7B;"), QString(u8"{"));
+    hexTounicode.insert(QString("&#x7D;"), QString(u8"}"));
+    hexTounicode.insert(QString("&#x7C;"), QString(u8"|"));
+    hexTounicode.insert(QString("&#x2F;"), QString(u8"/"));
+    hexTounicode.insert(QString("&#x5C;"), QString(u8"\\"));
+    hexTounicode.insert(QString("&#x3B;"), QString(u8";"));
+    hexTounicode.insert(QString("&#x27;"), QString(u8"'"));
+    hexTounicode.insert(QString("&#x30;"), QString(u8"0"));
+    hexTounicode.insert(QString("&#x61B;"), QString(u8"؛"));
+    hexTounicode.insert(QString("&#x60C;"), QString(u8"،"));
+    hexTounicode.insert(QString("&#x5D;"), QString(u8"]"));
+    hexTounicode.insert(QString("&#x5B;"), QString(u8"["));
 
-    hexTounicode.insert(QString("&#x51;"), QString("Q"));
-    hexTounicode.insert(QString("&#x71;"), QString("q"));
-    hexTounicode.insert(QString("&#x57;"), QString("W"));
-    hexTounicode.insert(QString("&#x77;"), QString("w"));
-    hexTounicode.insert(QString("&#x45;"), QString("E"));
-    hexTounicode.insert(QString("&#x65;"), QString("e"));
-    hexTounicode.insert(QString("&#x52;"), QString("R"));
-    hexTounicode.insert(QString("&#x72;"), QString("r"));
-    hexTounicode.insert(QString("&#x54;"), QString("T"));
-    hexTounicode.insert(QString("&#x74;"), QString("t"));
-    hexTounicode.insert(QString("&#x59;"), QString("Y"));
-    hexTounicode.insert(QString("&#x79;"), QString("y"));
-    hexTounicode.insert(QString("&#x55;"), QString("U"));
-    hexTounicode.insert(QString("&#x75;"), QString("u"));
-    hexTounicode.insert(QString("&#x49;"), QString("I"));
-    hexTounicode.insert(QString("&#x69;"), QString("i"));
-    hexTounicode.insert(QString("&#x4F;"), QString("O"));
-    hexTounicode.insert(QString("&#x6F;"), QString("o"));
-    hexTounicode.insert(QString("&#x50;"), QString("P"));
-    hexTounicode.insert(QString("&#x70;"), QString("p"));
-    hexTounicode.insert(QString("&#x41;"), QString("A"));
-    hexTounicode.insert(QString("&#x61;"), QString("a"));
-    hexTounicode.insert(QString("&#x53;"), QString("S"));
-    hexTounicode.insert(QString("&#x73;"), QString("s"));
-    hexTounicode.insert(QString("&#x44;"), QString("D"));
-    hexTounicode.insert(QString("&#x64;"), QString("d"));
-    hexTounicode.insert(QString("&#x46;"), QString("F"));
-    hexTounicode.insert(QString("&#x66;"), QString("f"));
-    hexTounicode.insert(QString("&#x47;"), QString("G"));
-    hexTounicode.insert(QString("&#x67;"), QString("g"));
-    hexTounicode.insert(QString("&#x48;"), QString("H"));
-    hexTounicode.insert(QString("&#x68;"), QString("h"));
-    hexTounicode.insert(QString("&#x4A;"), QString("J"));
-    hexTounicode.insert(QString("&#x6A;"), QString("j"));
-    hexTounicode.insert(QString("&#x4B;"), QString("K"));
-    hexTounicode.insert(QString("&#x6B;"), QString("k"));
-    hexTounicode.insert(QString("&#x4C;"), QString("L"));
-    hexTounicode.insert(QString("&#x6C;"), QString("l"));
-    hexTounicode.insert(QString("&#x5A;"), QString("Z"));
-    hexTounicode.insert(QString("&#x7A;"), QString("z"));
-    hexTounicode.insert(QString("&#58;"), QString("X"));
-    hexTounicode.insert(QString("&#78;"), QString("x"));
-    hexTounicode.insert(QString("&#x43;"), QString("C"));
-    hexTounicode.insert(QString("&#x63;"), QString("c"));
-    hexTounicode.insert(QString("&#x56;"), QString("V"));
-    hexTounicode.insert(QString("&#x76;"), QString("v"));
-    hexTounicode.insert(QString("&#x42;"), QString("B"));
-    hexTounicode.insert(QString("&#x62;"), QString("b"));
-    hexTounicode.insert(QString("&#x4E;"), QString("N"));
-    hexTounicode.insert(QString("&#x6E;"), QString("n"));
-    hexTounicode.insert(QString("&#x4D;"), QString("M"));
-    hexTounicode.insert(QString("&#x6D;"), QString("m"));
+    hexTounicode.insert(QString("&#x51;"), QString(u8"Q"));
+    hexTounicode.insert(QString("&#x71;"), QString(u8"q"));
+    hexTounicode.insert(QString("&#x57;"), QString(u8"W"));
+    hexTounicode.insert(QString("&#x77;"), QString(u8"w"));
+    hexTounicode.insert(QString("&#x45;"), QString(u8"E"));
+    hexTounicode.insert(QString("&#x65;"), QString(u8"e"));
+    hexTounicode.insert(QString("&#x52;"), QString(u8"R"));
+    hexTounicode.insert(QString("&#x72;"), QString(u8"r"));
+    hexTounicode.insert(QString("&#x54;"), QString(u8"T"));
+    hexTounicode.insert(QString("&#x74;"), QString(u8"t"));
+    hexTounicode.insert(QString("&#x59;"), QString(u8"Y"));
+    hexTounicode.insert(QString("&#x79;"), QString(u8"y"));
+    hexTounicode.insert(QString("&#x55;"), QString(u8"U"));
+    hexTounicode.insert(QString("&#x75;"), QString(u8"u"));
+    hexTounicode.insert(QString("&#x49;"), QString(u8"I"));
+    hexTounicode.insert(QString("&#x69;"), QString(u8"i"));
+    hexTounicode.insert(QString("&#x4F;"), QString(u8"O"));
+    hexTounicode.insert(QString("&#x6F;"), QString(u8"o"));
+    hexTounicode.insert(QString("&#x50;"), QString(u8"P"));
+    hexTounicode.insert(QString("&#x70;"), QString(u8"p"));
+    hexTounicode.insert(QString("&#x41;"), QString(u8"A"));
+    hexTounicode.insert(QString("&#x61;"), QString(u8"a"));
+    hexTounicode.insert(QString("&#x53;"), QString(u8"S"));
+    hexTounicode.insert(QString("&#x73;"), QString(u8"s"));
+    hexTounicode.insert(QString("&#x44;"), QString(u8"D"));
+    hexTounicode.insert(QString("&#x64;"), QString(u8"d"));
+    hexTounicode.insert(QString("&#x46;"), QString(u8"F"));
+    hexTounicode.insert(QString("&#x66;"), QString(u8"f"));
+    hexTounicode.insert(QString("&#x47;"), QString(u8"G"));
+    hexTounicode.insert(QString("&#x67;"), QString(u8"g"));
+    hexTounicode.insert(QString("&#x48;"), QString(u8"H"));
+    hexTounicode.insert(QString("&#x68;"), QString(u8"h"));
+    hexTounicode.insert(QString("&#x4A;"), QString(u8"J"));
+    hexTounicode.insert(QString("&#x6A;"), QString(u8"j"));
+    hexTounicode.insert(QString("&#x4B;"), QString(u8"K"));
+    hexTounicode.insert(QString("&#x6B;"), QString(u8"k"));
+    hexTounicode.insert(QString("&#x4C;"), QString(u8"L"));
+    hexTounicode.insert(QString("&#x6C;"), QString(u8"l"));
+    hexTounicode.insert(QString("&#x5A;"), QString(u8"Z"));
+    hexTounicode.insert(QString("&#x7A;"), QString(u8"z"));
+    hexTounicode.insert(QString("&#58;"), QString(u8"X"));
+    hexTounicode.insert(QString("&#78;"), QString(u8"x"));
+    hexTounicode.insert(QString("&#x43;"), QString(u8"C"));
+    hexTounicode.insert(QString("&#x63;"), QString(u8"c"));
+    hexTounicode.insert(QString("&#x56;"), QString(u8"V"));
+    hexTounicode.insert(QString("&#x76;"), QString(u8"v"));
+    hexTounicode.insert(QString("&#x42;"), QString(u8"B"));
+    hexTounicode.insert(QString("&#x62;"), QString(u8"b"));
+    hexTounicode.insert(QString("&#x4E;"), QString(u8"N"));
+    hexTounicode.insert(QString("&#x6E;"), QString(u8"n"));
+    hexTounicode.insert(QString("&#x4D;"), QString(u8"M"));
+    hexTounicode.insert(QString("&#x6D;"), QString(u8"m"));
 }
 
 QByteArray Download::convertTounicode(QByteArray before)

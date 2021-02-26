@@ -4,6 +4,8 @@
 #include "ui_Player.h"
 #include "Download.h"
 
+#include "qdebug.h"
+
 class Player : public QMainWindow
 {
     Q_OBJECT
@@ -13,4 +15,15 @@ public:
 
 private:
     Ui::PlayerClass ui;
+
+public:
+    QString addressFolder;
+
+
+
+
+public slots:
+    void pre_play();
+    void selectFolder();
+    void shapeReader();
 };

@@ -28,6 +28,7 @@
      <string>Tasks</string>
     </property>
     <addaction name="actionDownload_a_session"/>
+    <addaction name="actionOpen_session"/>
    </widget>
    <addaction name="menuTasks"/>
   </widget>
@@ -43,6 +44,11 @@
   <action name="actionDownload_a_session">
    <property name="text">
     <string>Download a session</string>
+   </property>
+  </action>
+  <action name="actionOpen_session">
+   <property name="text">
+    <string>Open session</string>
    </property>
   </action>
  </widget>

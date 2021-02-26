@@ -20,6 +20,7 @@
 #include "qtextdocument.h"
 #include "qbytearray.h"
 #include "qvector.h"
+#include "qmap.h"
 
 
 
@@ -80,7 +81,7 @@ public:
 
 
 public:
-	QHash<QString, QString> hexTounicode;
+	QMap<QString, QString>  hexTounicode;
 	bool download_All_slide = false;
 	QUrl mainUrl;
 	QString meetingID;
@@ -118,8 +119,6 @@ public:
 	QByteArray shapes;
 	QByteArray chats;
 	QByteArray cursor;
-	QByteArray desksharevideo;
-	QByteArray webcams;
 	QByteArray panzooms;
 	QStringList addressfiles;
 	QStringList justaddressurl;
